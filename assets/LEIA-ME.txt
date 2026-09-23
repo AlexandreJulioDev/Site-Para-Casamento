@@ -1,0 +1,1 @@
+Assets (convite-principal.png, lista-presentes-1.png, lista-presentes-2.png, musica-fundo.mp3) devem ser copiados da sua pasta atual.

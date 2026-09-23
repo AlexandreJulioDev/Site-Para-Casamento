@@ -54,10 +54,16 @@ const audioFundo   = document.getElementById('musica-fundo');
 
 function abrirConvite() {
   if (!telaAbertura) return;
-  telaAbertura.classList.add('escondida');
+  const envelope = document.getElementById('envelope');
+  if (envelope) envelope.classList.add('aberto');
   if (audioFundo && audioFundo.paused) {
     audioFundo.play().catch(function () {});
   }
+  // Espera a animação do envelope terminar (aba abrindo + carta
+  // deslizando pra fora) antes de revelar o convite por baixo.
+  setTimeout(function () {
+    telaAbertura.classList.add('escondida');
+  }, 1300);
 }
 
 if (telaAbertura) {

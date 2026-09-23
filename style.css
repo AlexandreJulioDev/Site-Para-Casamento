@@ -77,6 +77,121 @@ body {
   color: #4A2C5E;
   line-height: 1.1;
 }
+
+/* ── ENVELOPE 3D ─────────────────────────────────────────────
+   Fechado por padrão. Ao clicar, o JS adiciona a classe
+   "aberto" no #envelope, que dispara as transições abaixo:
+   a aba (flap) gira em 3D pra trás e a carta desliza pra cima.
+   ──────────────────────────────────────────────────────────── */
+.envelope {
+  position: relative;
+  width: clamp(180px, 55vw, 240px);
+  aspect-ratio: 3 / 2;
+  margin: 10px auto 6px;
+  perspective: 800px;
+  animation: envelopeFloat 3s ease-in-out infinite;
+}
+.envelope.aberto {
+  animation: none;
+}
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.envelope__back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #EDE3F5, #DCC9EC);
+  border-radius: 6px;
+  box-shadow: 0 14px 34px rgba(74, 44, 94, 0.28);
+  z-index: 0;
+}
+
+.envelope__letter {
+  position: absolute;
+  top: 6%;
+  bottom: 14%;
+  left: 10%;
+  right: 10%;
+  background: #FBF9FB;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(74, 44, 94, 0.18);
+  z-index: 1;
+  transition: transform 0.8s ease 0.35s;
+}
+.envelope__letter::before,
+.envelope__letter::after {
+  content: '';
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  height: 6%;
+  background: #E3D5EF;
+  border-radius: 2px;
+}
+.envelope__letter::before { top: 24%; }
+.envelope__letter::after  { top: 42%; }
+
+.envelope__front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 62%;
+  clip-path: polygon(0 100%, 50% 38%, 100% 100%);
+  background: linear-gradient(135deg, #D9C3EA, #B79AC9);
+  border-radius: 0 0 6px 6px;
+  z-index: 2;
+}
+
+.envelope__flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 58%;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(135deg, #C9A9DE, #9B7EBD);
+  border-radius: 6px 6px 0 0;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.7s cubic-bezier(0.45, 0, 0.2, 1);
+  backface-visibility: hidden;
+  z-index: 3;
+}
+
+.envelope__seal {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 15%;
+  min-width: 34px;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #B0558A, #6E2B52);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.32);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 4;
+}
+
+.envelope.aberto .envelope__flap {
+  transform: rotateX(-125deg);
+}
+.envelope.aberto .envelope__seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+}
+.envelope.aberto .envelope__letter {
+  transform: translateY(-58%);
+}
+
 .tela-abertura__icone {
   font-size: 1.8rem;
   margin-top: 4px;
