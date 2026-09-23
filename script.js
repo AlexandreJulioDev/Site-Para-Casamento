@@ -44,6 +44,34 @@ if (btnMapa) {
 
 
 // ============================================================
+//  TELA DE ABERTURA — "Toque para abrir o convite"
+//  O toque nessa tela é o que libera o áudio a tocar com som
+//  (exigência dos navegadores). Depois do toque, ela some e o
+//  convite aparece por baixo.
+// ============================================================
+const telaAbertura = document.getElementById('tela-abertura');
+const audioFundo   = document.getElementById('musica-fundo');
+
+function abrirConvite() {
+  if (!telaAbertura) return;
+  telaAbertura.classList.add('escondida');
+  if (audioFundo && audioFundo.paused) {
+    audioFundo.play().catch(function () {});
+  }
+}
+
+if (telaAbertura) {
+  telaAbertura.addEventListener('click', abrirConvite, { once: true });
+  telaAbertura.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      abrirConvite();
+    }
+  }, { once: true });
+}
+
+
+// ============================================================
 //  TROCA ENTRE VIEW DO CONVITE E VIEW DA LISTA DE PRESENTES
 //  (sem navegação real — o <audio> nunca é recriado)
 // ============================================================

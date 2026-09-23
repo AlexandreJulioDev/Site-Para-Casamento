@@ -25,6 +25,21 @@
 <body>
 
 <!-- ============================================================
+     TELA DE ABERTURA — "Toque para abrir o convite"
+     Fica por cima de tudo até a pessoa tocar nela. Esse toque é
+     a interação que os navegadores exigem pra permitir a música
+     tocar com som — por isso ela funciona como o "gatilho" que
+     faz a música começar sozinha assim que a pessoa entra.
+     ============================================================ -->
+<div id="tela-abertura" class="tela-abertura" role="button" tabindex="0" aria-label="Toque para abrir o convite">
+  <span class="tela-abertura__legenda">Com muito amor</span>
+  <span class="tela-abertura__nomes">Kaline &amp; Pedro</span>
+  <span class="tela-abertura__icone">💌</span>
+  <span class="tela-abertura__toque">Toque para abrir o convite</span>
+</div>
+
+
+<!-- ============================================================
      MODO DEBUG — adicione a classe "debug" no <body> para ver
      as áreas clicáveis com contorno vermelho tracejado.
      Ex: <body class="debug">

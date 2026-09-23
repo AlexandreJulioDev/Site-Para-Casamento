@@ -40,6 +40,68 @@ body {
 }
 
 /* ============================================================
+   TELA DE ABERTURA — "Toque para abrir o convite"
+   Cobre a tela toda até o primeiro toque, que libera o áudio.
+   ============================================================ */
+.tela-abertura {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 32px;
+  background: linear-gradient(135deg, #F3EEF7 0%, #E8DDF0 50%, #F3EEF7 100%);
+  cursor: pointer;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.tela-abertura.escondida {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.tela-abertura__legenda {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #9B7EBD;
+}
+.tela-abertura__nomes {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.6rem, 11vw, 4.2rem);
+  color: #4A2C5E;
+  line-height: 1.1;
+}
+.tela-abertura__icone {
+  font-size: 1.8rem;
+  margin-top: 4px;
+}
+.tela-abertura__toque {
+  margin-top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4A2C5E;
+  padding: 14px 28px;
+  border: 1.5px solid #9B7EBD;
+  border-radius: 50px;
+  background: rgba(155, 126, 189, 0.10);
+  animation: pulseToque 1.8s ease-in-out infinite;
+}
+@keyframes pulseToque {
+  0%, 100% { transform: scale(1);     box-shadow: 0 0 0 rgba(155, 126, 189, 0); }
+  50%      { transform: scale(1.045); box-shadow: 0 0 18px rgba(155, 126, 189, 0.35); }
+}
+
+
+/* ============================================================
    SISTEMA DE VIEWS
    Cada <section class="view"> é uma "tela" do site. Só uma fica
    visível por vez — trocar entre elas é feito via JS (script.js)

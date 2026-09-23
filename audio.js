@@ -33,6 +33,17 @@
 
   audio.volume = 0.45;
 
+  // ── NOVO: mantém o ícone/estado sincronizados sempre, não importa
+  // quem mandou tocar/pausar (tela de abertura, botão, fallback etc.) ──
+  audio.addEventListener('play', function () {
+    atualizarIcone(true);
+    salvarEstado(true);
+  });
+  audio.addEventListener('pause', function () {
+    atualizarIcone(false);
+    salvarEstado(false);
+  });
+
   // ── NOVO: detecta arquivo de musica ausente/vazio/corrompido ──────────────
   // Se assets/musica-fundo.mp3 nao existir, estiver vazio (0 KB) ou for
   // invalido, o navegador dispara o evento "error" no <audio>. Sem isso,
