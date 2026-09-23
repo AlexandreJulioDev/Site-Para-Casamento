@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Kaline &amp; Pedro — Convite de Casamento | 12/12/2026</title>
+  <meta name="description" content="Kaline e Pedro convidam você para o seu casamento no dia 12 de dezembro de 2026, às 15h, na Chácara Paraíso dos Anjos, Camaragibe - PE. Confirme sua presença!" />
+  <meta name="theme-color" content="#4A2C5E" />
+
+  <!-- Open Graph (compartilhamento no WhatsApp/redes sociais) -->
+  <meta property="og:title" content="Kaline & Pedro — Casamento 12/12/2026" />
+  <meta property="og:description" content="Você está convidado para o nosso casamento! Confirme sua presença." />
+  <meta property="og:type" content="website" />
+  <!-- [INSERIR] og:image — substitua pelo caminho da imagem de capa para redes sociais -->
+  <!-- <meta property="og:image" content="assets/convite-principal.png" /> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     MODO DEBUG — adicione a classe "debug" no <body> para ver
+     as áreas clicáveis com contorno vermelho tracejado.
+     Ex: <body class="debug">
+     Remova "debug" antes de publicar o site.
+     ============================================================ -->
+
+
+<!-- ============================================================
+     TRILHA SONORA DE FUNDO
+     Agora existe UMA página só (SPA simples), então o <audio>
+     nunca é destruído ao "trocar de página" — a música toca
+     continuamente entre o convite e a lista de presentes.
+     TROCAR MÚSICA: substitua assets/musica-fundo.mp3 pelo seu
+     arquivo (não pode estar vazio / 0 KB).
+     ============================================================ -->
+<audio id="musica-fundo" loop autoplay preload="auto">
+  <source src="assets/musica-fundo.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Botão fixo de controle de música — lógica em audio.js -->
+<button
+  id="btn-musica-topo"
+  class="btn-musica-topo"
+  type="button"
+  aria-label="Tocar música de fundo"
+  title="Tocar música"
+>♪</button>
+
+
+<!-- ============================================================
+     VIEW 1 — CONVITE PRINCIPAL
+     Imagem assets/convite-principal.png com 3 áreas clicáveis:
+       1. Confirme sua Presença → Google Forms (nova aba)
+       2. Como Chegar           → Google Maps  (nova aba)
+       3. Lista de Presentes    → troca para a view #view-lista
+          (sem recarregar a página — a música continua tocando)
+     ============================================================ -->
+<section id="view-convite" class="view" aria-label="Convite de Casamento">
+  <div class="image-wrapper" id="wrapper-convite">
+
+    <img
+      src="assets/convite-principal.png"
+      alt="Convite de casamento de Kaline e Pedro — 12 de dezembro de 2026, às 15h, Chácara Paraíso dos Anjos, Camaragibe - PE"
+      class="layout-image"
+      id="img-convite"
+    />
+
+    <!-- ─────────────────────────────────────────────────────────
+         ÁREAS CLICÁVEIS SOBRE O CONVITE
+         Todas as posições (top, left, width, height) são em %
+         relativo ao tamanho do wrapper (que acompanha a imagem).
+         ► Para calibrar: adicione class="debug" no <body>.
+         ───────────────────────────────────────────────────────── -->
+
+    <!-- LINK 1: Confirme a sua Presença (círculo esquerdo) → Google Forms -->
+    <a
+      id="btn-confirmar"
+      href="https://forms.gle/5i2ZoRLc5juxeKEK6"
+      target="_blank"
+      rel="noopener"
+      class="hotspot btn-presenca"
+      aria-label="Confirme a sua presença no casamento"
+    ></a>
+
+    <!-- LINK 2: Como Chegar (círculo central) → Google Maps -->
+    <button
+      id="btn-mapa"
+      class="hotspot btn-chegar"
+      aria-label="Como chegar — abre Google Maps"
+      type="button"
+    ></button>
+
+    <!-- BOTÃO 3: Lista de Presentes → troca de view via JS (script.js) -->
+    <button
+      id="btn-presentes"
+      class="hotspot btn-lista"
+      aria-label="Nossa lista de presentes"
+      type="button"
+    ></button>
+
+  </div>
+</section>
+<!-- /view-convite -->
+
+
+<!-- ============================================================
+     VIEW 2 — LISTA DE PRESENTES
+     Fica escondida (class="hidden") até o usuário clicar em
+     "Lista de Presentes" na view do convite.
+     ============================================================ -->
+<section id="view-lista" class="view hidden" aria-label="Lista de Presentes">
+
+  <!-- BOTÃO VOLTAR — troca de volta para a view do convite via JS -->
+  <button type="button" id="btn-voltar" class="btn-voltar" aria-label="Voltar para o convite">
+    ← Voltar para o convite
+  </button>
+
+  <!-- LISTA DE PRESENTES — IMAGEM 1 (itens 01–09) -->
+  <div class="image-wrapper" id="wrapper-lista-1">
+    <img
+      src="assets/lista-presentes-1.png"
+      alt="Lista de presentes — itens 1 a 9"
+      class="layout-image"
+    />
+
+    <!-- LINHA 1 -->
+    <a href="https://www.asaas.com/c/yz8m27oiu4nnb5nv" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-01" aria-label="Comprar: Cota para primeira feira do casal — R$ 201,30"></a>
+    <a href="https://www.asaas.com/c/8ufl8vzkzotpop02" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-02" aria-label="Comprar: Kit sobrevivência — R$ 150,00"></a>
+    <a href="https://www.asaas.com/c/hqbusc2wdye308h1" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-03" aria-label="Comprar: Cota para compra do gás — R$ 102,30"></a>
+
+    <!-- LINHA 2 -->
+    <a href="https://www.asaas.com/c/4peilzukq0wc22mn" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-04" aria-label="Comprar: Cota conta de energia — R$ 129,10"></a>
+    <a href="https://www.asaas.com/c/ta1otsa47soogi5t" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-05" aria-label="Comprar: Roupa de cama — R$ 99,99"></a>
+    <a href="https://www.asaas.com/c/4ho23604wulugi8p" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-06" aria-label="Comprar: Kit paciência — R$ 202,20"></a>
+
+    <!-- LINHA 3 -->
+    <a href="https://www.asaas.com/c/g41g25j44jt0nxdw" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-07" aria-label="Comprar: Cota cozinha — R$ 299,00"></a>
+    <a href="https://www.asaas.com/c/pt18nadcaad8he00" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-08" aria-label="Comprar: Noite especial — R$ 155,93"></a>
+    <a href="https://www.asaas.com/c/s1enla8th2vdgpaa" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-09" aria-label="Comprar: Café da manhã romântico — R$ 250,05"></a>
+  </div>
+  <!-- /wrapper-lista-1 -->
+
+  <!-- LISTA DE PRESENTES — IMAGEM 2 (itens 10–12 + Pix avulso) -->
+  <div class="image-wrapper" id="wrapper-lista-2">
+    <img
+      src="assets/lista-presentes-2.png"
+      alt="Lista de presentes — itens 10 a 12 e Pix avulso"
+      class="layout-image"
+    />
+
+    <a href="https://www.asaas.com/c/s2b0i3z9cefixo9z" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-10" aria-label="Comprar: Churrasco — R$ 147,50"></a>
+    <a href="https://www.asaas.com/c/7wnsfma1trkqodsr" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-11" aria-label="Comprar: Kit bons momentos — R$ 250,05"></a>
+    <a href="https://www.asaas.com/c/eivt74iktzb8v0fe" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-12" aria-label="Comprar: Passeio do casal — R$ 115,70"></a>
+    <a href="https://www.asaas.com/c/e9vxaou304z00ni7" target="_blank" rel="noopener noreferrer"
+       class="hotspot comprar-pix" aria-label="Fazer um Pix avulso"></a>
+  </div>
+  <!-- /wrapper-lista-2 -->
+
+</section>
+<!-- /view-lista -->
+
+
+<script src="script.js"></script>
+<script src="audio.js"></script>
+</body>
+</html>
