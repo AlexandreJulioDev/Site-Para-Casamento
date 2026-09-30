@@ -422,10 +422,11 @@ body {
 /* ════════════════════════════════════════════════════════════
    LISTA DE PRESENTES — IMAGEM 2 (itens 10–12 + Pix)
    ════════════════════════════════════════════════════════════ */
-.comprar-10  { top: 34.83%; left: 2.96%;  width: 29.99%; height: 3.20%; border-radius: 50px; }
-.comprar-11  { top: 34.83%; left: 34.46%; width: 29.99%; height: 3.20%; border-radius: 50px; }
-.comprar-12  { top: 34.83%; left: 65.93%; width: 29.99%; height: 3.20%; border-radius: 50px; }
-.comprar-pix { top: 77.77%; left: 30.07%; width: 41.33%; height: 4.43%; border-radius: 50px; }
+.comprar-10  { top: 34.81%; left: 3.00%;  width: 29.89%; height: 3.20%; border-radius: 50px; }
+.comprar-11  { top: 34.81%; left: 34.44%; width: 30.00%; height: 3.20%; border-radius: 50px; }
+.comprar-12  { top: 34.81%; left: 66.00%; width: 29.89%; height: 3.20%; border-radius: 50px; }
+.comprar-13  { top: 67.94%; left: 16.44%; width: 30.00%; height: 3.19%; border-radius: 50px; }
+.comprar-14  { top: 67.94%; left: 52.44%; width: 30.00%; height: 3.19%; border-radius: 50px; }
 
 
 /* ============================================================
